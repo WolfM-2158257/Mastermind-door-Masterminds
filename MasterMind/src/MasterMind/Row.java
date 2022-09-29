@@ -38,12 +38,12 @@ public class Row {
             int sameColor = 0;
             boolean redIncremented = false;
             for (int j = 0; j < baseCode.getLength(); j++) {
-                if (m_code.getBlock(i) == baseCode.getBlock(j) && i == j){
+                if (m_code.getBlock(j) == baseCode.getBlock(i) && i == j){
                     m_pins_red++;
                     redIncremented = true;
                     break;
                 }
-                else if (m_code.getBlock(i) == baseCode.getBlock(j) && i != j){
+                else if (m_code.getBlock(j) == baseCode.getBlock(i) && i != j){
                     sameColor++;
                 }
             }

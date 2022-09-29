@@ -58,7 +58,7 @@ public class MasterMind {
         if (isCodeGuessed)
             System.out.println("You guessed the code!");
         else
-            System.out.println("You failed in guessing the code...");
+            System.out.println("You failed in guessing the code... \nThe code was: " + m_codeToBreak.toString());
         MasterMindIO.printLine();
         roundOver();
     }

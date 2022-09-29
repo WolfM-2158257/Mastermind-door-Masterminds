@@ -94,7 +94,7 @@ public class MasterMindIO {
 
 
     public static void printLine(){
-        System.out.println("\n==========================\n");
+        System.out.println("\n===========================\n");
     }
 
     public static String multiply(int times, String s) {
