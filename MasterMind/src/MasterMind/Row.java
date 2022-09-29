@@ -40,6 +40,7 @@ public class Row {
                 }
                 else if (m_code.getBlock(i) == baseCode.getBlock(j) && i != j){
                     m_pins_white++;
+                    break;
                 }
             }
         }
