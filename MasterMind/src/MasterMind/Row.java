@@ -14,7 +14,7 @@ public class Row {
     * @out: String
     **/
     public String GetRowAsString(){
-        return this.m_code.GetCodeAsString() + String.format("%dW, %dR", this.m_pins_white, this.m_pins_red);
+        return this.m_code.GetCodeAsString() + String.format("| %dW, %dR", this.m_pins_white, this.m_pins_red);
     }
 
     /**
