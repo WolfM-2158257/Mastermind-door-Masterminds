@@ -6,9 +6,12 @@ public class RandomStrategy extends MasterMindStrategy{
 
     public RandomStrategy(int amountColors, int cols) {
         super(amountColors, cols);
-        //TODO Auto-generated constructor stub
     }
     
+    /**
+     * (code breaker)
+     * Guess a random code
+     */
     public int[] guessCode(){
         Random rand = new Random();
         
@@ -19,6 +22,10 @@ public class RandomStrategy extends MasterMindStrategy{
         return code;
     }
 
+    /**
+     * (code maker)
+     * Generate a random code
+     */
     public int[] generateCode(){
         Random rand = new Random();
         

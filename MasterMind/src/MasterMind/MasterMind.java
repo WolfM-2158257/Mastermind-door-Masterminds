@@ -63,6 +63,10 @@ public class MasterMind {
         roundOver();
     }
 
+    /**
+     * Check if a player has won the game.
+     * @return false if game not over, true if game over
+     */
     private boolean checkGameOver(){
         if (m_scorePlayer1 >= m_maxScore){
             System.out.println("Player 1 won.");
@@ -106,7 +110,7 @@ public class MasterMind {
             code = new Code(m_strat.generateCode());
         }
         else{
-            code = new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours));
+            code = new Code(m_IOHandler.getCode("Code Maker, give a code:", COLS, m_amountColours));
             // MasterMindIO.clearConsole(); // to clear the console after the code has been chosen
         }
 
@@ -114,12 +118,16 @@ public class MasterMind {
         return code;
     }
 
+    /**
+     * Ask the player(or bot) to guess a code.
+     * @return guessed code.
+     */
     private Code inputCode(){
         int[] code_raw;
         if (m_strat != null && m_currentPlayer == 2)
             code_raw = m_strat.guessCode();
         else
-            code_raw = m_IOHandler.getCode("CodeBreaker give a code: ", COLS, m_amountColours);
+            code_raw = m_IOHandler.getCode("Code Breaker, guess the code: ", COLS, m_amountColours);
             
         return new Code(code_raw);
     }

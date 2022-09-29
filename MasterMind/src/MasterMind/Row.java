@@ -50,4 +50,10 @@ public class Row {
                 m_pins_white++;
         }
     }
+
+
+    // private void calcPins(Code baseCode){
+    //     char[] pinsArr = new char[baseCode.getLength()];
+           
+    // }
 }
