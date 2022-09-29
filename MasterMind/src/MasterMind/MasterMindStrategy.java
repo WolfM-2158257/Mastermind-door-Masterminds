@@ -1,5 +1,8 @@
 package MasterMind;
 
+/**
+ * @author Wolf Moyaers, Groepsnr. 8
+ */
 abstract public class MasterMindStrategy {
     protected int m_amountColorsGame;
     protected int m_colsGame;

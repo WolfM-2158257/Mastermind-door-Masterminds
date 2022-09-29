@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * Represents a code from the game MasterMind
  *
- * @author Lorrens Pantelis
+ * @author Lorrens Pantelis, Groeps nr. 8
  */
 public class Code {
     private int[] m_codes;

@@ -1,7 +1,7 @@
 package MasterMind;
 
 /**
- * @author SenneW, HiddeB
+ * @author SenneW, HiddeB, Groeps nr. 8
  */
 public class Row {
     private Code m_code;

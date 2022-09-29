@@ -2,6 +2,9 @@ package MasterMind;
 
 import java.util.Random;
 
+/**
+ * @author Wolf Moyaers, Groepsnr. 8
+ */
 public class RandomStrategy extends MasterMindStrategy{
 
     public RandomStrategy(int amountColors, int cols) {
