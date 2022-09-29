@@ -1,5 +1,8 @@
 package MasterMind;
 
+/**
+ * @author SenneW, HiddeB
+ */
 public class Row {
     private Code m_code;
     private int m_pins_red;
