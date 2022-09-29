@@ -8,6 +8,10 @@ public class Row {
     private int m_pins_red;
     private int m_pins_white;
 
+    /**
+     * @param code code used inside row
+     * @pre: code must be filled
+     **/
     public void Row(Code code)
     {
         m_pins_red = 0; m_pins_white = 0;
