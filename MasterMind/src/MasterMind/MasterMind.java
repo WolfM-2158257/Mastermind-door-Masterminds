@@ -6,7 +6,7 @@ public class MasterMind {
     private int m_amountColours;
     private ArrayList<Row> m_board;
     private MasterMindIO m_IOHandler;
-    private int scorePlayer1, scorePlayer2; // score
+    private int m_scorePlayer1, m_scorePlayer2; // score
     private int COLS; // len of code
     private int ROWS; // number of tries
 
@@ -22,6 +22,7 @@ public class MasterMind {
         this.init();
         // TODO: get code from codemaker
         // TODO: keep asking try from codebreaker and check
+        m_IOHandler.printBoard(this);
     }
 
 
@@ -35,5 +36,17 @@ public class MasterMind {
         COLS = m_IOHandler.getIntInput("How long can the code be? ");
         m_amountColours = m_IOHandler.getIntInput("How many colours? ");
         m_board = new ArrayList<Row>(ROWS);
+    }
+
+    public int getScorePlayer1(){
+        return m_scorePlayer1;
+    }
+
+    public int getScorePlayer2(){
+        return m_scorePlayer2;
+    }
+
+    public ArrayList<Row> getBoard(){
+        return m_board;
     }
 }
