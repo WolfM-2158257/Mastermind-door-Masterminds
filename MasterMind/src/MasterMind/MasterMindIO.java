@@ -70,6 +70,7 @@ public class MasterMindIO {
     }
 
     public void printBoard(MasterMind mm){
+        System.out.println("\n");
         printPlayerScores(mm.getScorePlayer1(), mm.getScorePlayer2());
         printRows(mm.COLS, mm.getBoard());
     }
@@ -83,12 +84,17 @@ public class MasterMindIO {
         }
     }
 
-    private void printPlayerScores(int p1, int p2){
+    public void printPlayerScores(int p1, int p2){
         //Player1: x         Player2: y
-        String s = "\nPlayer1: " + p1 + "       " + "Player2: " + p2;
+        String s = "Player1: " + p1 + "       " + "Player2: " + p2;
         System.out.println(s);
         // line
         System.out.println(multiply(s.length(), "-"));
+    }
+
+
+    public static void printLine(){
+        System.out.println("\n==========================\n");
     }
 
     public static String multiply(int times, String s) {
