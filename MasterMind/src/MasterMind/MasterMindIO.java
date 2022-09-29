@@ -53,6 +53,10 @@ public class MasterMindIO {
         return ret;
     }
 
+    /**
+     * Ask and get game type from user
+     * @return GameType
+     */
     public MasterMind.GameType getGameType(){
         System.out.println("Select Game mode");
         System.out.println("1) Player vs Player");
@@ -69,12 +73,23 @@ public class MasterMindIO {
         }while (true);
     }
 
+    /**
+     * calls functions with right parameters to print :
+     * Player scores
+     * Full board
+     * @param mm
+     */
     public void printBoard(MasterMind mm){
         System.out.println("\n");
         printPlayerScores(mm.getScorePlayer1(), mm.getScorePlayer2());
         printRows(mm.COLS, mm.getBoard());
     }
 
+    /**
+     * Print every row of the board
+     * @param codeLength
+     * @param board
+     */
     private void printRows(int codeLength, ArrayList<Row> board){
         // 1 | W G G R | W R R
         for (int i=0; i<board.size(); i++){
@@ -84,6 +99,11 @@ public class MasterMindIO {
         }
     }
 
+    /**
+     * Print all player scores
+     * @param p1 player1 score
+     * @param p2 player2 score
+     */
     public void printPlayerScores(int p1, int p2){
         //Player1: x         Player2: y
         String s = "Player1: " + p1 + "       " + "Player2: " + p2;
@@ -97,6 +117,12 @@ public class MasterMindIO {
         System.out.println("\n===========================\n");
     }
 
+    /**
+     * Returns given string multiplied by "times" times
+     * @param times
+     * @param s
+     * @return string
+     */
     public static String multiply(int times, String s) {
         String ret = "";
         for (int i = 0; i < times; i++)
