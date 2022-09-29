@@ -42,7 +42,10 @@ public class MasterMind {
         m_board = new ArrayList<Row>(ROWS);
         m_codeToBreak = this.askCodeFromCodeMaker();
     }
-
+    /**
+     * Get code from codemaker
+     * @out code from user input
+     */
     private Code askCodeFromCodeMaker(){
         return new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours));
     }
