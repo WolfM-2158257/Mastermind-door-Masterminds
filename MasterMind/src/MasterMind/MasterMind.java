@@ -22,7 +22,7 @@ public class MasterMind {
     }
 
     /**
-     * starts game
+     * Starts game
      */
     private void start(){
         this.init();
@@ -60,7 +60,7 @@ public class MasterMind {
     }
 
     /**
-     * inits game parameters
+     * Inits game parameters
      */
     private void init(){
         m_IOHandler = new MasterMindIO();
@@ -70,7 +70,10 @@ public class MasterMind {
         m_amountColours = m_IOHandler.getIntInput("How many colours? ");
         m_board = new ArrayList<Row>(ROWS);
     }
-
+    /**
+     * Get code from codemaker
+     * @out code from user input
+     */
     private Code askCodeFromCodeMaker(){
         Code code = new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours))
         MasterMindIO.clearConsole();
@@ -103,15 +106,35 @@ public class MasterMind {
 
     };
 
+    /**
+     *
+     * @return score of player 1
+     */
     public int getScorePlayer1(){
         return m_scorePlayer1;
     }
 
+    /**
+     *
+     * @return score of player 2
+     */
     public int getScorePlayer2(){
         return m_scorePlayer2;
     }
 
+    /**
+     *
+     * @return the complete board
+     */
     public ArrayList<Row> getBoard(){
         return m_board;
+    }
+
+    /**
+     *
+     * @return the length of the codes
+     */
+    public int getCodeLength(){
+        return COLS;
     }
 }
