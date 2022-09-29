@@ -9,7 +9,7 @@ public class MasterMind {
     private Code m_codeToBreak;
     private ArrayList<Row> m_board;
     private MasterMindIO m_IOHandler;
-    private int m_scorePlayer1, m_scorePlayer2; // score
+    private int m_maxScore, m_scorePlayer1, m_scorePlayer2; // score
     private int m_currentPlayer;
     public int COLS; // len of code
     public int ROWS; // number of tries
@@ -29,8 +29,16 @@ public class MasterMind {
         // TODO: get code from codemaker
         // TODO: keep asking try from codebreaker and check
         m_IOHandler.printBoard(this);
-        MasterMindIO.clearConsole();
-        mainLoop();
+
+        boolean gameFinished = false;
+        while (!gameFinished){
+            m_codeToBreak = this.askCodeFromCodeMaker();
+            mainLoop();
+            if (m_scorePlayer1 < m_maxScore && m_scorePlayer2 < m_maxScore){
+                gameFinished = true;
+                
+            }
+        }
     }
 
     private void mainLoop(){
@@ -48,7 +56,7 @@ public class MasterMind {
             System.out.println("You guessed the code!");
         else
             System.out.println("You failed to guess the code...");
-        incrementScore();
+        roundOver();
     }
 
     /**
@@ -61,11 +69,12 @@ public class MasterMind {
         COLS = m_IOHandler.getIntInput("How long can the code be? ");
         m_amountColours = m_IOHandler.getIntInput("How many colours? ");
         m_board = new ArrayList<Row>(ROWS);
-        m_codeToBreak = this.askCodeFromCodeMaker();
     }
 
     private Code askCodeFromCodeMaker(){
-        return new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours));
+        Code code = new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours))
+        MasterMindIO.clearConsole();
+        return code;
     }
 
     private Code inputCode(){
@@ -78,12 +87,20 @@ public class MasterMind {
         return new Code(code_raw);
     }
 
-    private void incrementScore() {
+    /**
+     * Round is over, swap players and increment scores
+     */
+    private void roundOver() {
         int score = m_board.size();
-        if (m_currentPlayer == 1)
+        if (m_currentPlayer == 1){
             m_scorePlayer1 += score;
-        else
+            m_currentPlayer = 2;
+        }
+        else{
             m_scorePlayer2 += score;
+            m_currentPlayer = 1;
+        }
+
     };
 
     public int getScorePlayer1(){
