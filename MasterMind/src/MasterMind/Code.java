@@ -48,6 +48,12 @@ public class Code {
         return m_codes.length;
     }
 
-
-
+    public boolean compare(Code code){
+        for(int i =0; i< this.m_codes.length; i++){
+            if(this.m_codes[i] != code.m_codes[i]){
+                return false;
+            }
+        }
+        return true;
+    }
 }

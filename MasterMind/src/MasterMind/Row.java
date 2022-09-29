@@ -8,9 +8,10 @@ public class Row {
     private int m_pins_red;
     private int m_pins_white;
 
-    public void Row()
+    public void Row(Code code)
     {
         m_pins_red = 0; m_pins_white = 0;
+        this.m_code = code;
     }
 
     /**
@@ -21,16 +22,6 @@ public class Row {
     public String toString()
     {
         return this.m_code.toString() + String.format("| %dW, %dR", this.m_pins_white, this.m_pins_red);
-    }
-
-    /**
-     * Add a code to the row
-     * @Param: User input code
-     * @pre: Code is filled
-     **/
-    public void AddCode(Code code)
-    {
-        this.m_code = code;
     }
 
     /**
