@@ -47,8 +47,8 @@ public class MasterMindIO {
         //        1 | W G G R | W R R
         System.out.println(multiply(codeLength, "-"));
         for (int i=0; i<board.size(); i++){
-            String row = Integer.toString(i+1) + " | ";
-            row += board.get(i).getRowAsString();
+            String row = i+1 + " | ";
+            //row += board.get(i).getRowAsString();
         }
     }
 
