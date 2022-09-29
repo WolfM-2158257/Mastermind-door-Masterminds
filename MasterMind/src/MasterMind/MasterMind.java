@@ -100,7 +100,7 @@ public class MasterMind {
 
     /**
      * Get code from codemaker
-     * @out code from user input
+     * @return code from user input
      */
     private Code askCodeFromCodeMaker(){
         Code code;
