@@ -53,6 +53,10 @@ public class MasterMindIO {
         return ret;
     }
 
+    /**
+     * Ask and get game type from user
+     * @return GameType
+     */
     public MasterMind.GameType getGameType(){
         System.out.println("Select Game mode");
         System.out.println("1) Player vs Player");
