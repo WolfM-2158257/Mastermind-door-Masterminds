@@ -57,10 +57,16 @@ public class MasterMind {
     }
 
     private boolean checkGameOver(){
-        if (m_scorePlayer1 < m_maxScore && m_scorePlayer2 < m_maxScore){
+        if (m_scorePlayer1 >= m_maxScore){
+            System.out.println("Player 1 won.");
             return true;
         }
-        return false;
+        else if (m_scorePlayer2 >= m_maxScore){
+            System.out.println("Player 2 won.");
+            return true;
+        }
+        else
+            return false;
     }
 
     /**
