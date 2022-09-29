@@ -1,6 +1,8 @@
 package MasterMind;
 
 
+import java.util.Arrays;
+
 public class Code {
     private int[] m_codes;
 
@@ -14,6 +16,12 @@ public class Code {
     public Code(int[] c){
         m_codes = c;
     }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(m_codes);
+    }
+
     /**
      * Returns codeBlock at position pos
      * @param pos
