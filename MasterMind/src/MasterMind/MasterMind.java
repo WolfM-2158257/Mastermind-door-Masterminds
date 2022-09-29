@@ -11,6 +11,8 @@ public class MasterMind {
     public int COLS; // len of code
     public int ROWS; // number of tries
 
+    private RandomStrategy m_strat;
+
     public static void main(String[] args){
         MasterMind game = new MasterMind();
         game.start();
@@ -21,10 +23,12 @@ public class MasterMind {
      */
     private void start(){
         this.init();
+        // TODO: get code from codemaker
         // TODO: keep asking try from codebreaker and check
         m_IOHandler.printBoard(this);
         MasterMindIO.clearConsole();
     }
+
 
     /**
      * inits game parameters
