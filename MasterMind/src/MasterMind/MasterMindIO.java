@@ -50,7 +50,6 @@ public class MasterMindIO {
             }
             ret[i] = input;
         }
-
         return ret;
     }
 
@@ -60,11 +59,9 @@ public class MasterMindIO {
     }
 
     private void printRows(int codeLength, ArrayList<Row> board){
-        //----------------------------
-        //        1 | W G G R | W R R
-        System.out.println(multiply(codeLength, "-"));
+        // 1 | W G G R | W R R
         for (int i=0; i<board.size(); i++){
-            String row = i+1 + " | ";
+            String row = (i+1) + " | ";
             row += board.get(i).toString();
             System.out.println(row);
         }
@@ -72,7 +69,10 @@ public class MasterMindIO {
 
     private void printPlayerScores(int p1, int p2){
         //Player1: x         Player2: y
-        //System.out.printf("Player1: " + );
+        String s = "\nPlayer1: " + p1 + "       " + "Player2: " + p2;
+        System.out.println(s);
+        // line
+        System.out.println(multiply(s.length(), "-"));
     }
 
     public static String multiply(int times, String s) {
