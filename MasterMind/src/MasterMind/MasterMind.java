@@ -5,6 +5,7 @@ import java.util.*;
 import javax.lang.model.util.ElementScanner6;
 
 public class MasterMind {
+    public static enum GameType{PlayervPlayer, PlayerVComputer}
     private int m_amountColours;
     private Code m_codeToBreak;
     private ArrayList<Row> m_board;
@@ -68,6 +69,11 @@ public class MasterMind {
         ROWS = m_IOHandler.getIntInput("How many codebreaker tries? ");
         COLS = m_IOHandler.getIntInput("How long can the code be? ");
         m_amountColours = m_IOHandler.getIntInput("How many colours? ");
+        m_maxScore = m_IOHandler.getIntInput("What is the max score of the game? ");
+        GameType game_type = m_IOHandler.getGameType();
+        if (game_type == GameType.PlayerVComputer){
+            this.m_strat = new RandomStrategy(m_amountColours, COLS);
+        }
         m_board = new ArrayList<Row>(ROWS);
     }
     /**
@@ -75,7 +81,7 @@ public class MasterMind {
      * @out code from user input
      */
     private Code askCodeFromCodeMaker(){
-        Code code = new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours))
+        Code code = new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours));
         MasterMindIO.clearConsole();
         return code;
     }
