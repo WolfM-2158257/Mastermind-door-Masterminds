@@ -5,6 +5,7 @@ import java.util.*;
 import javax.lang.model.util.ElementScanner6;
 
 public class MasterMind {
+    public static enum GameType{PlayervPlayer, PlayerVComputer}
     private int m_amountColours;
     private Code m_codeToBreak;
     private ArrayList<Row> m_board;
@@ -66,10 +67,16 @@ public class MasterMind {
     }
 
     private boolean checkGameOver(){
-        if (m_scorePlayer1 < m_maxScore && m_scorePlayer2 < m_maxScore){
+        if (m_scorePlayer1 >= m_maxScore){
+            System.out.println("Player 1 won.");
             return true;
         }
-        return false;
+        else if (m_scorePlayer2 >= m_maxScore){
+            System.out.println("Player 2 won.");
+            return true;
+        }
+        else
+            return false;
     }
 
     /**
@@ -81,6 +88,11 @@ public class MasterMind {
         ROWS = m_IOHandler.getIntInput("How many codebreaker tries? ");
         COLS = m_IOHandler.getIntInput("How long can the code be? ");
         m_amountColours = m_IOHandler.getIntInput("How many colours? ");
+        m_maxScore = m_IOHandler.getIntInput("What is the max score of the game? ");
+        GameType game_type = m_IOHandler.getGameType();
+        if (game_type == GameType.PlayerVComputer){
+            this.m_strat = new RandomStrategy(m_amountColours, COLS);
+        }
         m_board = new ArrayList<Row>(ROWS);
     }
     /**

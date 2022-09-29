@@ -53,6 +53,22 @@ public class MasterMindIO {
         return ret;
     }
 
+    public MasterMind.GameType getGameType(){
+        System.out.println("Select Game mode");
+        System.out.println("1) Player vs Player");
+        System.out.println("2) Player vs Computer");
+        do{
+            int option = getIntInput("Game mode? (1, 2)");
+            switch (option){
+                case 1:
+                    return MasterMind.GameType.PlayervPlayer;
+                case 2:
+                    return MasterMind.GameType.PlayerVComputer;
+            }
+            System.out.println("Wrong option, choose between 1 and 2");
+        }while (true);
+    }
+
     public void printBoard(MasterMind mm){
         printPlayerScores(mm.getScorePlayer1(), mm.getScorePlayer2());
         printRows(mm.COLS, mm.getBoard());
