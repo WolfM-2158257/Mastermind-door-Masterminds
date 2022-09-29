@@ -30,6 +30,24 @@ public class Row {
         this.m_code = code;
     }
 
+    /**
+     * Calculate the white and red pins (result) of the try
+     * @param baseCode --> the code that needs to be cracked
+     **/
+    private void getPins(Code baseCode) {
+        m_pins_red = 0;
+        m_pins_red = 0;
+        for (int i = 0; i < m_code.getLength(); i++) {
+            for (int j = 0; j < baseCode.getLength(); j++) {
+                if (m_code.getBlock(i) == baseCode.getBlock(j) && i == j){
+                    m_pins_red++;
+                }
+                else if (m_code.getBlock(i) == baseCode.getBlock(j) && i != j){
+                    m_pins_white++;
+                }
+            }
+        }
+    }
 
 
 
