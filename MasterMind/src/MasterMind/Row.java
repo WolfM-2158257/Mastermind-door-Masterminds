@@ -8,7 +8,7 @@ public class Row {
     private int m_pins_red;
     private int m_pins_white;
 
-    public void Row(Code code)
+    public Row(Code code)
     {
         m_pins_red = 0; m_pins_white = 0;
         this.m_code = code;
