@@ -6,7 +6,7 @@ public class MasterMind {
     private int m_amountColours;
     private ArrayList<Row> m_board;
     private MasterMindIO m_IOHandler;
-    private int scorePlayer1, scorePlayer2; // score
+    private int m_scorePlayer1, m_scorePlayer2; // score
     private int COLS; // len of code
     private int ROWS; // number of tries
 
@@ -39,11 +39,11 @@ public class MasterMind {
     }
 
     public int getScorePlayer1(){
-        return scorePlayer1;
+        return m_scorePlayer1;
     }
 
     public int getScorePlayer2(){
-        return scorePlayer2;
+        return m_scorePlayer2;
     }
 
     public ArrayList<Row> getBoard(){
