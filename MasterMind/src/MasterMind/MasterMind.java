@@ -2,8 +2,6 @@ package MasterMind;
 
 import java.util.*;
 
-import javax.lang.model.util.ElementScanner6;
-
 public class MasterMind {
     public static enum GameType{PlayervPlayer, PlayerVComputer}
     private int m_amountColours;
@@ -51,9 +49,7 @@ public class MasterMind {
         while (!isCodeGuessed && m_board.size() < ROWS ){
             Code code = inputCode();
 
-            Row r = new Row(code);
-            r.calcPins(m_codeToBreak);
-            m_board.add(r);
+            m_board.add(new Row(code));
             
             m_IOHandler.printBoard(this);
             
