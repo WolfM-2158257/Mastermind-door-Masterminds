@@ -9,7 +9,6 @@ public class MasterMind {
     private int m_scorePlayer1, m_scorePlayer2; // score
     private int COLS; // len of code
     private int ROWS; // number of tries
-
     private RandomStrategy m_strat;
 
     public static void main(String[] args){
