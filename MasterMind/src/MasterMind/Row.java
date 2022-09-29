@@ -34,14 +34,20 @@ public class Row {
      **/
     public void calcPins(Code baseCode) {
         for (int i = 0; i < m_code.getLength(); i++) {
+            int sameColor = 0;
+            boolean redIncremented = false;
             for (int j = 0; j < baseCode.getLength(); j++) {
                 if (m_code.getBlock(i) == baseCode.getBlock(j) && i == j){
                     m_pins_red++;
-                }
-                else if (m_code.getBlock(i) == baseCode.getBlock(j) && i != j){
-                    m_pins_white++;
+                    redIncremented = true;
                     break;
                 }
+                else if (m_code.getBlock(i) == baseCode.getBlock(j) && i != j){
+                    sameColor++;
+                }
+            }
+            if (sameColor > 0 && !redIncremented) {
+                m_pins_white++;
             }
         }
     }
