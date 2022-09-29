@@ -49,4 +49,8 @@ public class MasterMind {
     public ArrayList<Row> getBoard(){
         return m_board;
     }
+
+    public int getCodeLength(){
+        return COLS;
+    }
 }

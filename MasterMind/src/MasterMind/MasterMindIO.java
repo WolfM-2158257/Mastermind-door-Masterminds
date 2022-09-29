@@ -39,21 +39,28 @@ public class MasterMindIO {
 
     public void printBoard(MasterMind mm){
         printPlayerScores(mm.getScorePlayer1(), mm.getScorePlayer2());
-        printRows(mm.getBoard());
+        printRows(mm.getCodeLength(), mm.getBoard());
     }
 
-    private void printRows(ArrayList<Row> board){
+    private void printRows(int codeLength, ArrayList<Row> board){
         //----------------------------
         //        1 | W G G R | W R R
+        System.out.println(multiply(codeLength, "-"));
         for (int i=0; i<board.size(); i++){
-            String s;
-            //String s = board[i].getRowAsString();
-
+            String row = Integer.toString(i+1) + " | ";
+            row += board.get(i).getRowAsString();
         }
     }
 
     private void printPlayerScores(int p1, int p2){
         //Player1: x         Player2: y
         //System.out.printf("Player1: " + );
+    }
+
+    public static String multiply(int times, String s) {
+        String ret = "";
+        for (int i = 0; i < times; i++)
+            ret += s;
+        return ret;
     }
 }
