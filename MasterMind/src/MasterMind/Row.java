@@ -17,7 +17,7 @@ public class Row {
     @Override
     public String toString()
     {
-        return this.m_code.GetCodeAsString() + String.format("| %dW, %dR", this.m_pins_white, this.m_pins_red);
+        return this.m_code.toString() + String.format("| %dW, %dR", this.m_pins_white, this.m_pins_red);
     }
 
     /**
