@@ -62,7 +62,7 @@ public class MasterMind {
         if (isCodeGuessed)
             System.out.println("You guessed the code!");
         else
-            System.out.println("You failed to guess the code...");
+            System.out.println("You failed in guessing the code...");
         MasterMindIO.printLine();
         roundOver();
     }
@@ -97,14 +97,24 @@ public class MasterMind {
         }
         m_board = new ArrayList<Row>(ROWS);
     }
+
     /**
      * Get code from codemaker
      * @out code from user input
      */
     private Code askCodeFromCodeMaker(){
-        Code code = new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours));
-        System.out.println(code);
-        MasterMindIO.clearConsole();
+        Code code;
+        if (m_strat != null && m_currentPlayer == 1){
+            MasterMindIO.printLine();
+            System.out.println("The bot is choosing a code...");
+            code = new Code(m_strat.generateCode());
+        }
+        else{
+            code = new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours));
+            // MasterMindIO.clearConsole(); // to clear the console after the code has been chosen
+        }
+
+        MasterMindIO.printLine();
         return code;
     }
 
@@ -132,6 +142,7 @@ public class MasterMind {
             m_currentPlayer = 1;
         }
 
+        System.out.println("Player scores:");
         m_IOHandler.printPlayerScores(m_scorePlayer1, m_scorePlayer2);
         
         m_board = new ArrayList<>();
