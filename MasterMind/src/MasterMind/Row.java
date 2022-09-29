@@ -5,7 +5,8 @@ public class Row {
     private int m_pins_red;
     private int m_pins_white;
 
-    public void Row(){
+    public void Row()
+    {
         m_pins_red = 0; m_pins_white = 0;
     }
 
@@ -13,7 +14,9 @@ public class Row {
     * Returns the row as a string
     * @out: String
     **/
-    public String GetRowAsString(){
+    @Override
+    public String toString()
+    {
         return this.m_code.GetCodeAsString() + String.format("| %dW, %dR", this.m_pins_white, this.m_pins_red);
     }
 
@@ -22,7 +25,8 @@ public class Row {
      * @Param: User input code
      * @pre: Code is filled
      **/
-    public void AddCode(Code code){
+    public void AddCode(Code code)
+    {
         this.m_code = code;
     }
 
