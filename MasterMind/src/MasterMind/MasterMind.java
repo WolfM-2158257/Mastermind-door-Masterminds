@@ -34,15 +34,12 @@ public class MasterMind {
         boolean gameFinished = false;
         while (!gameFinished){
             m_codeToBreak = this.askCodeFromCodeMaker();
-            mainLoop();
-            if (m_scorePlayer1 < m_maxScore && m_scorePlayer2 < m_maxScore){
-                gameFinished = true;
-                
-            }
+            roundLoop();
+            gameFinished = checkGameOver();
         }
     }
 
-    private void mainLoop(){
+    private void roundLoop(){
         boolean isCodeGuessed = false;
         while (!isCodeGuessed && m_board.size() < ROWS ){
             Code code = inputCode();
@@ -58,6 +55,19 @@ public class MasterMind {
         else
             System.out.println("You failed to guess the code...");
         roundOver();
+    }
+
+    private boolean checkGameOver(){
+        if (m_scorePlayer1 >= m_maxScore){
+            System.out.println("Player 1 won.");
+            return true;
+        }
+        else if (m_scorePlayer2 >= m_maxScore){
+            System.out.println("Player 2 won.");
+            return true;
+        }
+        else
+            return false;
     }
 
     /**
@@ -91,7 +101,7 @@ public class MasterMind {
         if (m_strat != null || m_currentPlayer == 2)
             code_raw = m_strat.guessCode();
         else
-            code_raw = m_IOHandler.getCode("Give a code: ", COLS, m_amountColours);
+            code_raw = m_IOHandler.getCode("CodeBreaker give a code: ", COLS, m_amountColours);
             
         return new Code(code_raw);
     }
