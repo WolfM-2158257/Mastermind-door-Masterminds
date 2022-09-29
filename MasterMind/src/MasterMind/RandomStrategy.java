@@ -9,7 +9,7 @@ public class RandomStrategy extends MasterMindStrategy{
         //TODO Auto-generated constructor stub
     }
     
-    public Code doMove(){
+    public Code guessCode(){
         Random rand = new Random();
         
         int[] code = new int[m_colsGame];
