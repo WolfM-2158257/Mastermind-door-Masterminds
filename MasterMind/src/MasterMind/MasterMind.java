@@ -85,7 +85,7 @@ public class MasterMind {
      * @out code from user input
      */
     private Code askCodeFromCodeMaker(){
-        Code code = new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours))
+        Code code = new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours));
         MasterMindIO.clearConsole();
         return code;
     }
@@ -95,7 +95,7 @@ public class MasterMind {
         if (m_strat != null || m_currentPlayer == 2)
             code_raw = m_strat.guessCode();
         else
-            code_raw = m_IOHandler.getCode("Give a code: ", COLS, m_amountColours);
+            code_raw = m_IOHandler.getCode("CodeBreaker give a code: ", COLS, m_amountColours);
             
         return new Code(code_raw);
     }
