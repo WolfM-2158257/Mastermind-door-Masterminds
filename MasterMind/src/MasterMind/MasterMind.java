@@ -8,8 +8,8 @@ public class MasterMind {
     private ArrayList<Row> m_board;
     private MasterMindIO m_IOHandler;
     private int m_scorePlayer1, m_scorePlayer2; // score
-    private int COLS; // len of code
-    private int ROWS; // number of tries
+    public int COLS; // len of code
+    public int ROWS; // number of tries
 
     private RandomStrategy m_strat;
 
@@ -57,9 +57,5 @@ public class MasterMind {
 
     public ArrayList<Row> getBoard(){
         return m_board;
-    }
-
-    public int getCodeLength(){
-        return COLS;
     }
 }
