@@ -10,8 +10,8 @@ public class MasterMind {
     private ArrayList<Row> m_board;
 
     private int scorePlayer1, scorePlayer2; // score
-    public int COLS; // len of code
-    public int ROWS; // number of try's
+    private int COLS; // len of code
+    private int ROWS; // number of try's
 
     public static void main(String[] args){
         MasterMind game = new MasterMind();
