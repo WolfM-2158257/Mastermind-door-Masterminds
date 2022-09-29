@@ -1,5 +1,7 @@
 package MasterMind;
 
 public class Code {
-    // TODO: CREATE CLASS
+    private int[] m_codes;
+    private int m_length;
+
 }
