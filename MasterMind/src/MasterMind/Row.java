@@ -33,52 +33,49 @@ public class Row {
      * Calculate the white and red pins (result) of the try
      * 
      * @param baseCode --> the code that needs to be cracked
+     * @pre baseCode.length == m_code.length
+     * @post amount red pins + amount white pins <= COLS
      **/
-    // private void calcPins(Code baseCode) {
-    //     for (int i = 0; i < m_code.getLength(); i++) {
-    //         int sameColor = 0;
-    //         boolean redIncremented = false;
-    //         for (int j = 0; j < baseCode.getLength(); j++) {
-    //             if (m_code.getBlock(i) == baseCode.getBlock(j) && i == j) {
-    //                 m_pins_red++;
-    //                 redIncremented = true;
-    //                 break;
-    //             } else if (m_code.getBlock(i) == baseCode.getBlock(j) && i != j)
-    //                 sameColor++;
-    //         }
-    //         if (sameColor > 0 && !redIncremented)
-    //             m_pins_white++;
-    //     }
-    // }
-
     private void calcPins(Code baseCode) {
-        char[] pinsArr = new char[baseCode.getLength()];
-        fillArray(pinsArr, '0');
-        char[] locationsW = new char[baseCode.getLength()];
-        fillArray(locationsW, '0');
-        for (int i = 0; i < baseCode.getLength(); i++) {
+        char[] pinsGuess = new char[baseCode.getLength()]; // array with red or white on the locations of the breaker's code
+        fillArray(pinsGuess, '0');
+        char[] pinsCorrect = new char[baseCode.getLength()]; // array with red or white on the locations of the correct code.
+        fillArray(pinsCorrect, '0');
+        for (int i = 0; i < baseCode.getLength(); i++) { // find the red pins
             if (m_code.getBlock(i) == baseCode.getBlock(i)){
-                pinsArr[i] = 'R';
-                locationsW[i] = 'R';
+                pinsGuess[i] = 'R';
+                pinsCorrect[i] = 'R';
             }
         }
-        for (int i = 0; i < baseCode.getLength(); i++) {
+        for (int i = 0; i < baseCode.getLength(); i++) { // find the white pins
             for (int j = 0; j < baseCode.getLength(); j++) {
-                if (m_code.getBlock(i) == baseCode.getBlock(j) && pinsArr[i] == '0' && locationsW[j] == '0'){
-                    locationsW[j] = 'W';
-                    pinsArr[i] = 'W';
+                if (m_code.getBlock(i) == baseCode.getBlock(j) 
+                    && pinsGuess[i] == '0' && pinsCorrect[j] == '0'){ // when the current pin is empty, and the color is found somewhere else (on a location which has not been found before)
+                    pinsCorrect[j] = 'W';
+                    pinsGuess[i] = 'W';
                 }
             }
         }
-        setPinsByArr(pinsArr);
+        setPinsByArr(pinsGuess);
     }
 
+    /**
+     * Fill an array with a certain character
+     * @param arr : the array which is to be filled
+     * @param c : the character 
+     */
     private static void fillArray(char[] arr, char c) {
         for (int i = 0; i < arr.length; i++)
             arr[i] = c;
     }
 
 
+    /**
+     * set m_pins_white and m_pins_red to the amount of them found in the given aray
+     * @param pinsArr array with pins
+     * @pre in pinsArr: 'R' for red pins, 'W' for white pins, '0' for empty pins 
+     * @post m_pins_red and m_pins_white are set.
+     */
     private void setPinsByArr(char[] pinsArr){
         for (int i = 0; i < pinsArr.length; i++){
             if (pinsArr[i] == 'R')

@@ -58,7 +58,7 @@ public class MasterMindIO {
         System.out.println("1) Player vs Player");
         System.out.println("2) Player vs Computer");
         do{
-            int option = getIntInput("Game mode? (1, 2)");
+            int option = getIntInput("Game mode? (1, 2) ");
             switch (option){
                 case 1:
                     return MasterMind.GameType.PlayervPlayer;

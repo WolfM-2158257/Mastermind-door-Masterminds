@@ -11,6 +11,7 @@ public class RandomStrategy extends MasterMindStrategy{
     /**
      * (code breaker)
      * Guess a random code
+     * @return guessed code
      */
     public int[] guessCode(){
         Random rand = new Random();
@@ -25,6 +26,7 @@ public class RandomStrategy extends MasterMindStrategy{
     /**
      * (code maker)
      * Generate a random code
+     * @return generated code
      */
     public int[] generateCode(){
         Random rand = new Random();

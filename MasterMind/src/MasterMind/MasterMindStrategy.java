@@ -4,6 +4,11 @@ abstract public class MasterMindStrategy {
     protected int m_amountColorsGame;
     protected int m_colsGame;
     
+    /**
+     * 
+     * @param amountColors the amount of colors in the game
+     * @param cols : amount of digits a code can have
+     */
     public MasterMindStrategy(int amountColors, int cols){
         m_amountColorsGame = amountColors;
         m_colsGame = cols;
