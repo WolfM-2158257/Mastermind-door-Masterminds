@@ -10,6 +10,8 @@ public class MasterMind {
     private int COLS; // len of code
     private int ROWS; // number of tries
 
+    private RandomStrategy m_strat;
+
     public static void main(String[] args){
         MasterMind game = new MasterMind();
         game.start();
