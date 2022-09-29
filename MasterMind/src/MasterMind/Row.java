@@ -8,6 +8,7 @@ public class Row {
     private int m_pins_red;
     private int m_pins_white;
 
+
     public void Row()
     {
         m_pins_red = 0; m_pins_white = 0;

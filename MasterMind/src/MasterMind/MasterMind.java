@@ -18,7 +18,7 @@ public class MasterMind {
     }
 
     /**
-     * starts game
+     * Starts game
      */
     private void start(){
         this.init();
@@ -29,7 +29,7 @@ public class MasterMind {
 
 
     /**
-     * inits game parameters
+     * Inits game parameters
      */
     private void init(){
         m_IOHandler = new MasterMindIO();
@@ -40,18 +40,34 @@ public class MasterMind {
         m_board = new ArrayList<Row>(ROWS);
     }
 
+    /**
+     *
+     * @return score of player 1
+     */
     public int getScorePlayer1(){
         return m_scorePlayer1;
     }
 
+    /**
+     *
+     * @return score of player 2
+     */
     public int getScorePlayer2(){
         return m_scorePlayer2;
     }
 
+    /**
+     *
+     * @return the complete board
+     */
     public ArrayList<Row> getBoard(){
         return m_board;
     }
 
+    /**
+     *
+     * @return the length of the codes
+     */
     public int getCodeLength(){
         return COLS;
     }
