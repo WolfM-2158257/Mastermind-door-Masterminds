@@ -22,6 +22,7 @@ public class MasterMind {
         this.init();
         // TODO: get code from codemaker
         // TODO: keep asking try from codebreaker and check
+        m_IOHandler.printBoard(this);
     }
 
 
@@ -35,5 +36,17 @@ public class MasterMind {
         COLS = m_IOHandler.getIntInput("How long can the code be? ");
         m_amountColours = m_IOHandler.getIntInput("How many colours? ");
         m_board = new ArrayList<Row>(ROWS);
+    }
+
+    public int getScorePlayer1(){
+        return scorePlayer1;
+    }
+
+    public int getScorePlayer2(){
+        return scorePlayer2;
+    }
+
+    public ArrayList<Row> getBoard(){
+        return m_board;
     }
 }

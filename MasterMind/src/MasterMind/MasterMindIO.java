@@ -37,22 +37,22 @@ public class MasterMindIO {
         return ret;
     }
 
-    public void printBoard(ArrayList<Row> board){
-        printPlayerScores();
-        printRows(board);
+    public void printBoard(MasterMind mm){
+        printPlayerScores(mm.getScorePlayer1(), mm.getScorePlayer2());
+        printRows(mm.getBoard());
     }
 
     private void printRows(ArrayList<Row> board){
         //----------------------------
-        //        1  |  W  G  G  R  |  W  R  R
+        //        1 | W G G R | W R R
         for (int i=0; i<board.size(); i++){
             String s;
-            //String s = board[i].getAsString();
+            //String s = board[i].getRowAsString();
 
         }
     }
 
-    private void printPlayerScores(){
+    private void printPlayerScores(int p1, int p2){
         //Player1: x         Player2: y
         //System.out.printf("Player1: " + );
     }
