@@ -4,11 +4,12 @@ import java.util.*;
 
 public class MasterMind {
     private int m_amountColours;
+    private Code m_codeToBreak;
     private ArrayList<Row> m_board;
     private MasterMindIO m_IOHandler;
     private int m_scorePlayer1, m_scorePlayer2; // score
-    private int COLS; // len of code
-    private int ROWS; // number of tries
+    public int COLS; // len of code
+    public int ROWS; // number of tries
 
     private RandomStrategy m_strat;
 
@@ -25,6 +26,7 @@ public class MasterMind {
         // TODO: get code from codemaker
         // TODO: keep asking try from codebreaker and check
         m_IOHandler.printBoard(this);
+        MasterMindIO.clearConsole();
     }
 
 
@@ -38,6 +40,11 @@ public class MasterMind {
         COLS = m_IOHandler.getIntInput("How long can the code be? ");
         m_amountColours = m_IOHandler.getIntInput("How many colours? ");
         m_board = new ArrayList<Row>(ROWS);
+        m_codeToBreak = this.askCodeFromCodeMaker();
+    }
+
+    private Code askCodeFromCodeMaker(){
+        return new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours));
     }
 
     /**

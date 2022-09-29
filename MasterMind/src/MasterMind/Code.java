@@ -12,7 +12,10 @@ import java.util.Arrays;
 public class Code {
     private int[] m_codes;
 
-
+    /**
+     *
+     * @param s "10 4 3 1 9"
+     */
     public Code(String s){
         String[] invCodes = s.split(" ");
         m_codes = new int[invCodes.length];
@@ -31,7 +34,7 @@ public class Code {
     /**
      * Returns codeBlock at position pos
      * @param pos
-     * @return block of the code  
+     * @return block of the code
      *
      * @pre 0 < pos && pos < Code.length()
      * @post integer
@@ -48,6 +51,12 @@ public class Code {
         return m_codes.length;
     }
 
-
-
+    public boolean compare(Code code){
+        for(int i =0; i< this.m_codes.length; i++){
+            if(this.m_codes[i] != code.m_codes[i]){
+                return false;
+            }
+        }
+        return true;
+    }
 }
