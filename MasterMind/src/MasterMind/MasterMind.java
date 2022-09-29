@@ -63,6 +63,7 @@ public class MasterMind {
             System.out.println("You guessed the code!");
         else
             System.out.println("You failed to guess the code...");
+        MasterMindIO.printLine();
         roundOver();
     }
 
@@ -88,6 +89,7 @@ public class MasterMind {
         ROWS = m_IOHandler.getIntInput("How many codebreaker tries? ");
         COLS = m_IOHandler.getIntInput("How long can the code be? ");
         m_amountColours = m_IOHandler.getIntInput("How many colours? ");
+        m_currentPlayer = 2;
         m_maxScore = m_IOHandler.getIntInput("What is the max score of the game? ");
         GameType game_type = m_IOHandler.getGameType();
         if (game_type == GameType.PlayerVComputer){
@@ -108,7 +110,7 @@ public class MasterMind {
 
     private Code inputCode(){
         int[] code_raw;
-        if (m_strat != null || m_currentPlayer == 2)
+        if (m_strat != null && m_currentPlayer == 2)
             code_raw = m_strat.guessCode();
         else
             code_raw = m_IOHandler.getCode("CodeBreaker give a code: ", COLS, m_amountColours);
@@ -130,6 +132,9 @@ public class MasterMind {
             m_currentPlayer = 1;
         }
 
+        m_IOHandler.printPlayerScores(m_scorePlayer1, m_scorePlayer2);
+        
+        m_board = new ArrayList<>();
     };
 
     /**
