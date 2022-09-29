@@ -12,11 +12,11 @@ public class Row {
      * @param code code used inside row
      * @pre: code must be filled
      **/
-    public Row(Code code)
+    public Row(Code code, Code baseCode)
     {
         m_pins_red = 0; m_pins_white = 0;
         this.m_code = code;
-        this.calcPins(code);
+        this.calcPins(baseCode);
     }
 
     /**
@@ -38,18 +38,16 @@ public class Row {
             int sameColor = 0;
             boolean redIncremented = false;
             for (int j = 0; j < baseCode.getLength(); j++) {
-                if (m_code.getBlock(j) == baseCode.getBlock(i) && i == j){
+                if (m_code.getBlock(i) == baseCode.getBlock(j) && i == j){
                     m_pins_red++;
                     redIncremented = true;
                     break;
                 }
-                else if (m_code.getBlock(j) == baseCode.getBlock(i) && i != j){
+                else if (m_code.getBlock(i) == baseCode.getBlock(j) && i != j)
                     sameColor++;
-                }
             }
-            if (sameColor > 0 && !redIncremented) {
+            if (sameColor > 0 && !redIncremented)
                 m_pins_white++;
-            }
         }
     }
 }

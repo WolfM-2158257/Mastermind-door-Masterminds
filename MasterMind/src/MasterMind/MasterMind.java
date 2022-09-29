@@ -49,7 +49,7 @@ public class MasterMind {
         while (!isCodeGuessed && m_board.size() < ROWS ){
             Code code = inputCode();
 
-            m_board.add(new Row(code));
+            m_board.add(new Row(code, m_codeToBreak));
             
             m_IOHandler.printBoard(this);
             
