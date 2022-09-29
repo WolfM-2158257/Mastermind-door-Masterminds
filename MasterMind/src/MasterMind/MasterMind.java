@@ -26,24 +26,33 @@ public class MasterMind {
      */
     private void start(){
         this.init();
-        // TODO: get code from codemaker
-        // TODO: keep asking try from codebreaker and check
-        m_IOHandler.printBoard(this);
+        this.mainLoop();
+    }
 
+    /**
+     * The mainloop of MasterMind
+     */
+    private void mainLoop(){
         boolean gameFinished = false;
         while (!gameFinished){
             m_codeToBreak = this.askCodeFromCodeMaker();
-            roundLoop();
+            this.roundLoop();
             gameFinished = checkGameOver();
         }
     }
 
+    /**
+     * Singular roundLoop, breaker keeps guessing till he's out of tries,
+     * or he guessed the code
+     */
     private void roundLoop(){
         boolean isCodeGuessed = false;
         while (!isCodeGuessed && m_board.size() < ROWS ){
             Code code = inputCode();
-            
-            m_board.add(new Row(code));
+
+            Row r = new Row(code);
+            r.calcPins(m_codeToBreak);
+            m_board.add(r);
             
             m_IOHandler.printBoard(this);
             
@@ -80,6 +89,7 @@ public class MasterMind {
      */
     private Code askCodeFromCodeMaker(){
         Code code = new Code(m_IOHandler.getCode("CodeMaker give a code:", COLS, m_amountColours));
+        System.out.println(code);
         MasterMindIO.clearConsole();
         return code;
     }
