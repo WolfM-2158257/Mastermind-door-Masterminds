@@ -1,9 +1,14 @@
 package MasterMind;
 
-public interface MasterMindStrategy {
-    public void doMove();
+abstract public class MasterMindStrategy {
+    protected int m_amountColorsGame;
+    protected int m_colsGame;
+    
+    public MasterMindStrategy(int amountColors, int cols){
+        
+    }
+    
+    abstract public Code doMove();
 
-    public void generateCode();
+    abstract public Code generateCode();
 }
-
-
