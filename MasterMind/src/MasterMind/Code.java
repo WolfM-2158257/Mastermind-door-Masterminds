@@ -3,6 +3,12 @@ package MasterMind;
 
 import java.util.Arrays;
 
+
+/**
+ * Represents a code from the game MasterMind
+ *
+ * @author Lorrens Pantelis
+ */
 public class Code {
     private int[] m_codes;
 
@@ -25,7 +31,7 @@ public class Code {
     /**
      * Returns codeBlock at position pos
      * @param pos
-     * @return int
+     * @return block of the code  
      *
      * @pre 0 < pos && pos < Code.length()
      * @post integer
