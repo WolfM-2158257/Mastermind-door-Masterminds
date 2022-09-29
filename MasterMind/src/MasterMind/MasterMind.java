@@ -13,6 +13,8 @@ public class MasterMind {
     private int COLS; // len of code
     private int ROWS; // number of try's
 
+    private RandomStrategy m_strat;
+
     public static void main(String[] args){
         MasterMind game = new MasterMind();
         game.start();
@@ -37,6 +39,7 @@ public class MasterMind {
         m_amountColours = getIntInput("How many colours? ");
         m_board = new ArrayList<Row>(ROWS);
     }
+    
     /**
      * Based on question s you can ask input from players.
      * Method handles non integer inputs on its own.
