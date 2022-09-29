@@ -38,8 +38,6 @@ public class Row {
      * @param baseCode --> the code that needs to be cracked
      **/
     private void getPins(Code baseCode) {
-        m_pins_red = 0;
-        m_pins_red = 0;
         for (int i = 0; i < m_code.getLength(); i++) {
             for (int j = 0; j < baseCode.getLength(); j++) {
                 if (m_code.getBlock(i) == baseCode.getBlock(j) && i == j){
@@ -51,7 +49,4 @@ public class Row {
             }
         }
     }
-
-
-
 }
