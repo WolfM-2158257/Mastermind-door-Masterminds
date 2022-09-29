@@ -33,8 +33,8 @@ public class Row {
     private void getPins(Code baseCode) {
         m_pins_red = 0;
         m_pins_red = 0;
-        for (int i = 0; i < m_code.length; i++) {
-            for (int j = 0; j < baseCode.length; j++) {
+        for (int i = 0; i < m_code.getLength(); i++) {
+            for (int j = 0; j < baseCode.getLength(); j++) {
                 if (m_code.getBlock(i) == baseCode.getBlock(j) && i == j){
                     m_pins_red++;
                 }
