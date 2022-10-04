@@ -14,7 +14,7 @@ public class MasterMindController extends AbstractController {
         super(model);
     }
     
-    public void onStart() {
-        ((MasterMindModel)getModel()).start();
+    public void onStart(int amountColours, int cols, int rows, int maxScore, int gameMode) {
+        ((MasterMindModel)getModel()).start(amountColours, cols, rows, maxScore, gameMode);
     }
 }

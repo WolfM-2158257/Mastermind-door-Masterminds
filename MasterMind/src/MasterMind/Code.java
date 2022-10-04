@@ -20,6 +20,19 @@ public class Code {
         m_codes = c;
     }
 
+
+    /**
+     *
+     * @param c String of code
+     */
+    public Code(String c){
+        m_codes = new int[c.length()];
+        for (int i = 0; i < c.length(); i++){
+            m_codes[i] = c.charAt(i);
+        }
+    }
+
+
     /**
      * converts Code to a string
      * @return String
