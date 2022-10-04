@@ -7,10 +7,10 @@ import java.util.Scanner;
  * @author Ivan Molenaers, GroepNr. 8
  **/
 
-public class MasterMindIO {
+public class MasterMindIOTerminal {
     private final Scanner m_scan;
 
-    public MasterMindIO(){
+    public MasterMindIOTerminal(){
         m_scan = new Scanner(System.in);
     }
 
@@ -57,7 +57,7 @@ public class MasterMindIO {
      * Ask and get game type from user
      * @return GameType
      */
-    public MasterMind.GameType getGameType(){
+    public MasterMindModel.GameType getGameType(){
         System.out.println("Select Game mode");
         System.out.println("1) Player vs Player");
         System.out.println("2) Player vs Computer");
@@ -65,9 +65,9 @@ public class MasterMindIO {
             int option = getIntInput("Game mode? (1, 2) ");
             switch (option){
                 case 1:
-                    return MasterMind.GameType.PlayervPlayer;
+                    return MasterMindModel.GameType.PlayervPlayer;
                 case 2:
-                    return MasterMind.GameType.PlayerVComputer;
+                    return MasterMindModel.GameType.PlayerVComputer;
             }
             System.out.println("Wrong option, choose between 1 and 2");
         }while (true);
@@ -79,7 +79,7 @@ public class MasterMindIO {
      * Full board
      * @param mm
      */
-    public void printBoard(MasterMind mm){
+    public void printBoard(MasterMindModel mm){
         System.out.println("\n");
         printPlayerScores(mm.getScorePlayer1(), mm.getScorePlayer2());
         printRows(mm.COLS, mm.getBoard());
