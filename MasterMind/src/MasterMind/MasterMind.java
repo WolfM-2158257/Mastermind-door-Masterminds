@@ -2,6 +2,9 @@ package MasterMind;
 
 import java.util.*;
 
+/**
+ * @author Lorrens Pantelis, Groepsnr. 8
+ */
 public class MasterMind {
     public static enum GameType{PlayervPlayer, PlayerVComputer}
     private int m_amountColours;
