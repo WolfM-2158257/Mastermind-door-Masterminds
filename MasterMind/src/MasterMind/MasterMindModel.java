@@ -40,7 +40,7 @@ public class MasterMindModel extends Observable {
      */
     private void mainLoop() {
         boolean gameFinished = false;
-        this.roundLoop();
+        // this.roundLoop();
         gameFinished = checkGameOver();
     }
 
@@ -90,9 +90,9 @@ public class MasterMindModel extends Observable {
         else
             System.out.println("You failed in guessing the code... \nThe code was: " + m_codeToBreak.toString());
         
-        MasterMindUpdate info = new MasterMindUpdate();
+        // MasterMindUpdate info = new MasterMindUpdate();
         setChanged();
-        notifyObservers(info);
+        // notifyObservers(info);
     }
 
     /**
