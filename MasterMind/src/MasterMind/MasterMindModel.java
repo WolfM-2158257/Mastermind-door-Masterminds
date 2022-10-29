@@ -27,19 +27,28 @@ public class MasterMindModel extends Observable {
     public int COLS; // len of code
     public int ROWS; // number of tries
 
-    private RandomStrategy m_strat;
+    private RandomStrategy m_strat;        
+    
+    GameType game_type = GameType.PlayerVComputer;
 
     /**
      * Starts game
      */
     public void start(int amountColours, int cols, int rows, int maxScore, int gameMode) {
-        System.out.println("Game Starting..." + amountColours +  cols +  rows +  maxScore + gameMode);
+        System.out.println("Game Starting..." + amountColours + " " + cols + " " + rows + " " +  maxScore + " " + gameMode);
         
         m_amountColours = amountColours;
         COLS = cols;
         ROWS = rows;
         m_maxScore = maxScore;
         m_strat = new RandomStrategy(m_amountColours, COLS);
+
+        if (gameMode == 1){
+            game_type = GameType.PlayervPlayer;
+        }
+        else{
+            game_type = GameType.PlayerVComputer;
+        }
 
         this.init();
         this.mainLoop();
@@ -81,7 +90,6 @@ public class MasterMindModel extends Observable {
     private void init() {
         m_currentPlayer = 2;
 
-        GameType game_type = GameType.PlayerVComputer;
         if (game_type == GameType.PlayerVComputer) {
             this.m_strat = new RandomStrategy(m_amountColours, COLS);
         }
@@ -89,6 +97,8 @@ public class MasterMindModel extends Observable {
     }
 
     public void setCodeBase(String code) {
+        System.out.println("Current code: " + code);
+        
         m_codeToBreak = new Code(code);
 
         GameUpdate info = new GameUpdate(Event.GAME_MAKRCODE_ADDED);
