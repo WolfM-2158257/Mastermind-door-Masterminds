@@ -10,7 +10,7 @@ public class GameUpdate {
         m_event = event;
     }
 
-    GameUpdate(Row row){
+    public void setRow(Row row){
         m_row = row;
     }
     

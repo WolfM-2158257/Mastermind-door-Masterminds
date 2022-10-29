@@ -16,30 +16,31 @@ public class RowView extends AbstractView {
 
     public RowView(Row row) {
         super(row, null);
-    }
 
-    public JComponent getUI() {
+        m_panel = new JPanel();
 
         Row m = (Row)getModel();
 
         this.m_code = new JLabel(m.getCodeString());
         this.m_red_pins = new JLabel(m.getRedString());
-        this.m_red_pins = new JLabel(m.getWhiteString());
-        LayoutManager layout = new FlowLayout();
+        this.m_white_pins = new JLabel(m.getWhiteString());
+        // LayoutManager layout = new FlowLayout();
 
         // set layout
-        this.m_panel.setLayout(layout);
+        // this.m_panel.setLayout(layout);
 
         // add buttons
         this.m_panel.add(this.m_code);
         this.m_panel.add(this.m_red_pins);
         this.m_panel.add(this.m_white_pins);
+    }
 
+    public JComponent getUI() {
         return m_panel;
     }
 
     @Override
     public void update(Observable o, Object arg){
-       this.m_panel.disable(); 
+    //    this.m_panel.disable(); 
     }
 }

@@ -8,10 +8,14 @@ import java.util.Observable;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.LayoutManager;
+import java.awt.FlowLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import MasterMind.MasterMindController;
@@ -30,12 +34,17 @@ public class GameView extends AbstractView {
     private JTextField m_textBreakerCode;
     private JButton m_buttonBreaker;
 
-    private ArrayList<RowView> m_rows; 
 
     public GameView(Observable model, MasterMindController controller) {      
         super(model, controller);
         
         m_panel = new JPanel();
+
+        LayoutManager layout = new BoxLayout(m_panel, BoxLayout.Y_AXIS);
+
+        // set layout
+        this.m_panel.setLayout(layout);
+
         // initialization
         initMakerComponents();
         initBreakerComponents();
@@ -46,7 +55,7 @@ public class GameView extends AbstractView {
 
     private void initMakerComponents(){
         Dimension dimension = new Dimension(200, 20);
-        m_textMakerCode = new JTextField("Code Separated By Space");
+        m_textMakerCode = new JTextField("1 1 1 1 1");
         m_textMakerCode.setPreferredSize(dimension);
 
         m_buttonMaker = new JButton("Break Code");
@@ -62,7 +71,7 @@ public class GameView extends AbstractView {
 
     private void initBreakerComponents(){
         Dimension dimension = new Dimension(200, 20);
-        m_textBreakerCode = new JTextField("5");
+        m_textBreakerCode = new JTextField("1 1 1 1 2");
         m_textBreakerCode.setPreferredSize(dimension);
 
         m_buttonBreaker = new JButton("Guess Code");
@@ -90,21 +99,19 @@ public class GameView extends AbstractView {
 
     private void addRow(Row row){
         RowView rowV = new RowView(row);
-        m_rows.add(rowV);
         m_panel.add(rowV.getUI());
     }
     
     
     @Override
     public void update(Observable o, Object info) {
-        GameUpdate gameInfo = (GameUpdate) info;
-        switch (gameInfo.getEvent()){
+        switch (((GameUpdate) info).getEvent()){
             case GAME_MAKRCODE_ADDED:
                 System.out.println("Code Made!");
                 showBreaker();
                 break;
             case GAME_BRKRCODE_ADDED:
-                addRow(gameInfo.getRow());
+                addRow(((GameUpdate) info).getRow());
                 break;
         }
     }

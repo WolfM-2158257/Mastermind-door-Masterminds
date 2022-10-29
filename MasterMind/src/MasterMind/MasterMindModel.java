@@ -120,12 +120,13 @@ public class MasterMindModel extends Observable {
             System.out.println("You guessed the code!");
             roundOver();
         }
-        else
-            System.out.println("You failed in guessing the code... \nThe code was: " + m_codeToBreak.toString());
+        // else
+        //     System.out.println("You failed in guessing the code... \nThe code was: " + m_codeToBreak.toString());
         
         Row rowCopy = new Row(row);
 
-        GameUpdate info = new GameUpdate(rowCopy);
+        GameUpdate info = new GameUpdate(Event.GAME_BRKRCODE_ADDED);
+        info.setRow(rowCopy);
         setChanged();
         notifyObservers(info);
     }
