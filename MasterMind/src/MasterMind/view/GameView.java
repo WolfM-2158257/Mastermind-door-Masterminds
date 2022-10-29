@@ -78,18 +78,22 @@ public class GameView extends AbstractView {
         m_panel.add(m_textBreakerCode);
         m_panel.add(m_buttonBreaker);
     }
+
+    private void addRow(){
+
+    }
     
     
     @Override
     public void update(Observable o, Object info) {
-        switch (((GameUpdate) info).getEvent()){
+        GameUpdate gameInfo = (GameUpdate) info;
+        switch (gameInfo.getEvent()){
             case GAME_MAKRCODE_ADDED:
                 System.out.println("Code Made!");
                 showBreaker();
                 break;
             case GAME_BRKRCODE_ADDED:
-                // showGame();
-                // System.out.println("Shit is working");
+                addRow();
                 break;
         }
     }
