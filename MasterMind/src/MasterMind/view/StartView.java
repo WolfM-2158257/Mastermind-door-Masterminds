@@ -1,6 +1,7 @@
 package MasterMind.view;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -9,10 +10,11 @@ import javax.swing.*;
 
 import MasterMind.MVC.AbstractView;
 import MasterMind.MVC.Controller;
+import MasterMind.MVC.View;
 import MasterMind.MasterMindController;
 
-public class StartScreen extends AbstractView {
-    private BoxLayout m_container;
+public class StartView extends AbstractView {
+    private JPanel m_panel;
 
     private JTextField m_textAmountColours;
     private JTextField m_textCols;
@@ -22,20 +24,31 @@ public class StartScreen extends AbstractView {
 
     private JButton m_start;
 
-    public StartScreen(Container target) {        
-        m_container = new BoxLayout(target, BoxLayout.Y_AXIS);
-        m_textAmountColours = new JTextField();
-        m_textCols = new JTextField();
-        m_textRows = new JTextField();
-        m_textMaxScore = new JTextField();
-        m_textGameMode = new JTextField();
+    public StartView(Observable model, MasterMindController controller) {      
+        super(model, controller);  
+        
+        m_panel = new JPanel();
+
+        Dimension dimension = new Dimension(100, 20);
+        
+        m_textAmountColours = new JTextField("5");
+        m_textAmountColours.setPreferredSize(dimension);
+        m_textCols = new JTextField("5");
+        m_textCols.setPreferredSize(dimension);
+        m_textRows = new JTextField("5");
+        m_textRows.setPreferredSize(dimension);
+        m_textMaxScore = new JTextField("10");
+        m_textMaxScore.setPreferredSize(dimension);
+        m_textGameMode = new JTextField("1");
+        m_textGameMode.setPreferredSize(dimension);
         m_start = new JButton("Start");
 
-        target.add(m_textCols);
-        target.add(m_textRows);
-        target.add(m_textMaxScore);
-        target.add(m_textGameMode);
-        target.add(m_start);
+        m_panel.add(m_textAmountColours);
+        m_panel.add(m_textCols);
+        m_panel.add(m_textRows);
+        m_panel.add(m_textMaxScore);
+        m_panel.add(m_textGameMode);
+        m_panel.add(m_start);
 
         m_start.addActionListener(new ActionListener() {
             @Override
@@ -51,12 +64,18 @@ public class StartScreen extends AbstractView {
         });
     }
 
-    public BoxLayout getUI(){
-        return m_container;
-    }
     
+    @Override
+    public void update(Observable o, Object info) {
+
+    }
+
     @Override
     public Controller defaultController(Observable model) {
         return new MasterMindController(model);        
+    }
+    
+    public JComponent getUI() {
+        return m_panel;
     }
 }

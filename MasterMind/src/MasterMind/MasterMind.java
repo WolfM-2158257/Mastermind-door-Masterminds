@@ -1,7 +1,7 @@
 package MasterMind;
 
 import java.util.*;
-
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -14,6 +14,9 @@ import MasterMind.view.MasterMindView;
  */
 public class MasterMind {
     private MasterMindModel m_model;
+
+    private MasterMindView m_masterView;
+
     
     public MasterMind(){
         m_model = new MasterMindModel();
@@ -21,7 +24,9 @@ public class MasterMind {
 
 
     public void createGUI(){
-        JFrame frame = new MasterMindView("Mastermind By Masterminds", m_model);           
+        JFrame frame = new JFrame("Mastermind By Masterminds");
+        frame.setPreferredSize(new Dimension(500, 500));
+        m_masterView = new MasterMindView(frame.getContentPane(), "Mastermind By Masterminds", m_model);           
 
         frame.addWindowListener(new WindowAdapter() {
             @Override

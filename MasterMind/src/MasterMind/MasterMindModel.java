@@ -10,6 +10,14 @@ public class MasterMindModel extends Observable {
         PlayervPlayer, PlayerVComputer
     }
 
+    public static enum Event{
+        GAME_STARTED,
+        GAME_STOPPED,
+        GAME_BRKRCODE_ADDED,
+        GAME_MAKRCODE_ADDED,
+    }
+    
+
     private int m_amountColours;
     private Code m_codeToBreak;
     private ArrayList<Row> m_board;
@@ -25,6 +33,8 @@ public class MasterMindModel extends Observable {
      * Starts game
      */
     public void start(int amountColours, int cols, int rows, int maxScore, int gameMode) {
+        System.out.println("Game Starting..." + amountColours +  cols +  rows +  maxScore + gameMode);
+        
         m_amountColours = amountColours;
         COLS = cols;
         ROWS = rows;
@@ -33,6 +43,11 @@ public class MasterMindModel extends Observable {
 
         this.init();
         this.mainLoop();
+
+        GameUpdate info = new GameUpdate(Event.GAME_STARTED);
+        
+        setChanged();
+        notifyObservers(info);
     }
 
     /**
@@ -75,6 +90,11 @@ public class MasterMindModel extends Observable {
 
     public void setCodeBase(String code) {
         m_codeToBreak = new Code(code);
+
+        GameUpdate info = new GameUpdate(Event.GAME_MAKRCODE_ADDED);
+
+        setChanged();
+        notifyObservers(info);
     }
 
     private void inputCode(String codeStr) {
