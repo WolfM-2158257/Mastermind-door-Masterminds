@@ -100,7 +100,8 @@ public class MasterMindModel extends Observable {
     private void inputCode(String codeStr) {
         Code code = new Code(codeStr);
 
-        m_board.add(new Row(code, m_codeToBreak));
+        Row row = new Row(code, m_codeToBreak);
+        m_board.add(row);
 
         boolean isCodeGuessed = m_codeToBreak.compare(code);
         if (isCodeGuessed){
@@ -110,9 +111,11 @@ public class MasterMindModel extends Observable {
         else
             System.out.println("You failed in guessing the code... \nThe code was: " + m_codeToBreak.toString());
         
-        // MasterMindUpdate info = new MasterMindUpdate();
+        Row rowCopy = new Row(row);
+
+        GameUpdate info = new GameUpdate(rowCopy);
         setChanged();
-        // notifyObservers(info);
+        notifyObservers(info);
     }
 
     /**

@@ -19,6 +19,12 @@ public class Row {
         this.calcPins(baseCode);
     }
 
+    public Row(Row row) {
+        m_pins_red = row.m_pins_red;
+        m_pins_white = row.m_pins_white;
+        this.m_code = row.m_code;
+    }
+
     /**
      * Returns the row as a string
      * 
@@ -27,6 +33,18 @@ public class Row {
     @Override
     public String toString() {
         return this.m_code.toString() + String.format("| %dW, %dR", this.m_pins_white, this.m_pins_red);
+    }
+
+    public String getCodeString() {
+        return this.m_code.toString();
+    }
+
+    public String getWhiteString() {
+        return Integer.toString(m_pins_white);
+    }
+
+    public String getRedString() {
+        return Integer.toString(m_pins_red);
     }
 
     /**
