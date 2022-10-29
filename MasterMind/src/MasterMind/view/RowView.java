@@ -22,8 +22,9 @@ public class RowView extends AbstractView {
 
         Row m = (Row)getModel();
 
-        this.m_code = new JLabel(m.toString());
-    
+        this.m_code = new JLabel(m.getCodeString());
+        this.m_red_pins = new JLabel(m.getRedString());
+        this.m_red_pins = new JLabel(m.getWhiteString());
         LayoutManager layout = new FlowLayout();
 
         // set layout
@@ -31,6 +32,8 @@ public class RowView extends AbstractView {
 
         // add buttons
         this.m_panel.add(this.m_code);
+        this.m_panel.add(this.m_red_pins);
+        this.m_panel.add(this.m_white_pins);
 
         return m_panel;
     }
