@@ -1,9 +1,9 @@
 package MasterMind;
-
+import java.util.Observable;
 /**
  * @author SenneW, HiddeB, Groeps nr. 8
  */
-public class Row {
+public class Row extends Observable {
     private Code m_code;
     private int m_pins_red;
     private int m_pins_white;
