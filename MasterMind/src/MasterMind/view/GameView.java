@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import MasterMind.MasterMindController;
+import MasterMind.Row;
 import MasterMind.MVC.AbstractView;
 import MasterMind.MVC.Controller;
 
@@ -65,6 +66,14 @@ public class GameView extends AbstractView {
         m_textBreakerCode.setPreferredSize(dimension);
 
         m_buttonBreaker = new JButton("Guess Code");
+        m_buttonBreaker.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                String codeStr = m_textBreakerCode.getText();
+    
+                ((MasterMindController)getController()).onBreakerGuess(codeStr);
+            }
+        });
     }
 
     private void showMaker(){
@@ -79,8 +88,10 @@ public class GameView extends AbstractView {
         m_panel.add(m_buttonBreaker);
     }
 
-    private void addRow(){
-
+    private void addRow(Row row){
+        RowView rowV = new RowView(row);
+        m_rows.add(rowV);
+        m_panel.add(rowV.getUI());
     }
     
     
@@ -93,7 +104,7 @@ public class GameView extends AbstractView {
                 showBreaker();
                 break;
             case GAME_BRKRCODE_ADDED:
-                addRow();
+                addRow(gameInfo.getRow());
                 break;
         }
     }

@@ -23,4 +23,8 @@ public class MasterMindController extends AbstractController {
     public void onMakerSubmittedCode(String codeStr) {
         ((MasterMindModel)getModel()).setCodeBase(codeStr);
     }
+    
+    public void onBreakerGuess(String codeStr) {
+        ((MasterMindModel)getModel()).inputCode(codeStr);
+    }
 }

@@ -97,7 +97,7 @@ public class MasterMindModel extends Observable {
         notifyObservers(info);
     }
 
-    private void inputCode(String codeStr) {
+    public void inputCode(String codeStr) {
         Code code = new Code(codeStr);
 
         Row row = new Row(code, m_codeToBreak);
