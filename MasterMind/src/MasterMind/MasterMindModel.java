@@ -101,6 +101,8 @@ public class MasterMindModel extends Observable {
         
         m_codeToBreak = new Code(code);
 
+        System.out.print("actual Code:" + m_codeToBreak.toString());
+
         GameUpdate info = new GameUpdate(Event.GAME_MAKRCODE_ADDED);
 
         setChanged();

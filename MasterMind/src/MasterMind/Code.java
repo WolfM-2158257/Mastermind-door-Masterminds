@@ -1,6 +1,7 @@
 package MasterMind;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -26,9 +27,10 @@ public class Code {
      * @param c String of code
      */
     public Code(String c){
-        m_codes = new int[c.length()];
-        for (int i = 0; i < c.length(); i++){
-            m_codes[i] = c.charAt(i);
+        String[] codeArr = c.split("\\s");
+        m_codes = new int[codeArr.length];
+        for (int i = 0; i < m_codes.length; i++){
+            m_codes[i] = Integer.parseInt(codeArr[i]);
         }
     }
 
